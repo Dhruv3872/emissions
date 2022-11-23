@@ -1,27 +1,27 @@
-# EmissionsApp
+# Emissions App
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.5.
+App to show a graph containing the average emission levels of one of the following gases over the chosen period of time : 
+1. Methane
+2. Carbon monoxide
+3. Ozone
+4. Nitrogen dioxide
 
-## Development server
+## API reference:
+---
+1. [website](https://emissions-api.org/)
+2. [API documentation](https://api.v2.emissions-api.org/ui/)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Desired Features:
+---
+1. Choose the gas for which you want to see the emissions data
+    from the drop-down menu.
+2. Add/remove countries one by one into/from the line graph.
+3. Compare emission levels among the countries added to the graph. 
+    Each country's emissions data will be shown by a unique coloured line.
+4. Change the starting date and end date according to your interest.
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Changes since the last commit:
+---
+This is the initial commit.  
+All I wanted to do was to initiate this Angular project
+and incorporate the Emissions API for this commit. 
