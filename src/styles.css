@@ -1,1 +1,4 @@
 /* You can add global styles to this file, and also import other style files */
+/* At least one theme has to be improted for the Angular app to render components 
+        properly. */
+@import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";

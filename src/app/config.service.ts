@@ -41,4 +41,16 @@ export class ConfigService {
     //This method was created to avoid code repeatition.
     return this.http.get(apiUrl);
   }
+
+  /* Part of a future commit: 
+  Unfinished Code to place the selected gas from the 'Select Gas' mat-select 
+    form control in the place of 'product' in the following emissions API:
+    https://api.v2.emissions-api.org/api/v2/{product}/average.json :
+  */
+  getGasAverageIndia(gas : string){
+    let gasAverageApiUrl = "https://api.v2.emissions-api.org/api/v2/"
+  + gas + "/average.json"
+    + "?country=IND" + "&begin=2022-01-01" + "&end=2022-11-23";
+    return this.returnResponse(gasAverageApiUrl);
+  }
 }
