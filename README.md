@@ -22,15 +22,15 @@ App to show a graph containing the average emission levels of one of the followi
 
 ## Changes since the last commit:
 ---
-1. Added 'Select Gas' mat-select form control and filled it with
-    gas options. As of this commit, the gas options have been 
-    put in code, and not taken from a database. I will get it
-    done within the next 2 commits.
-2. Added 'Select Country' mat-select form control and filled it
-    with 2 countries for now. These options will also be imported
-    directly from a database within the next 2 commits.
-3. Performed a 2-way data binding between the mat-select component 
-    'Select Gas' of the app component template and the 'selected'
-    property of the app component.
-4. Put a 'Go' button when clicked, will result in transmission of
-    a query to the Emissions API endpoint.
+1. In the App component template: Added 'start date' and 'end date'
+    date-picker Angular material components.  
+2. In app.component.ts: Created 'getCountryArray' and 'getGasArray'
+    methods to obtain a list of countries from the 'countries'
+    table and a list of gases from the 'gases' table respectively
+    in the form of array. Entire table contents of 'countries' and 'gases' tables are passed to these methods respectively, and in order to do that, I have created a separate laravel application and connected API endpoints with this application. That laravel application will be merged with this project repository in the next commit.
+
+## Purpose of the commit:
+---
+To fill the 'Select Country' and 'Select Gas' mat-select form controls with the relevant values
+    from the 'countries' and 'gases' tables of the 'emissions' database respectively.  
+In order to achieve this, we have used a laravel application as our back end app.

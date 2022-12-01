@@ -8,10 +8,6 @@
     <mat-label>Select Gas</mat-label>
     <mat-select [(value)]="selected" required>
         <mat-option *ngFor="let gas of gases" [value]="gas">{{ gas }}</mat-option>
-        <!-- Initially, I had created the mat-options in place: -->
-        <!-- <mat-option value="one">one</mat-option>
-        <mat-option value="two">two</mat-option>
-        <mat-option value="three">three</mat-option> -->
     </mat-select>
 </mat-form-field><br>
 <!-- Select country from the drop down menu: -->
@@ -22,7 +18,24 @@
     </mat-select>
 </mat-form-field>
 <br>
+<p>Selected value: {{selected}}</p>
+<!-- Start date date-picker -->
+<mat-form-field appearance="fill">
+    <mat-label>Choose a start date</mat-label>
+    <input required matInput [matDatepicker]="startDatePicker">
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+    <mat-datepicker #startDatePicker></mat-datepicker>
+</mat-form-field>
+<br>
+<!-- End date date-picker -->
+<mat-form-field appearance="fill">
+    <mat-label>Choose an end date</mat-label>
+    <input required matInput [matDatepicker]="endDatePicker">
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+    <mat-datepicker #endDatePicker></mat-datepicker>
+  </mat-form-field>
+  <br><br>
 <!-- A button when clicked, will result in transmission of a query to the Emissions API endpoint: -->
 <button type="submit" mat-stroked-button color="primary" (click)="query('xyz')">Go</button>
-<!-- query(#gasSelection) -->
-<p>Selected value: {{selected}}</p>

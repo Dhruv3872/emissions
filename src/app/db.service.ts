@@ -4,19 +4,23 @@
  */
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DbService {
+  backEndUrl = 'http://localhost:8000/';
+  /* Since the laravel application needed for this Angular application
+      has been run on port 8000.*/
 
   constructor(private http: HttpClient) { }
 
-  getCountries(){
-    return this.http.get('http://localhost:3306/emissions/countries[0]');
-    //http:// localhost:44376/countries[0]
-    //http:// localhost:44376/countries
-    //http:// localhost:44376
-    //http:// localhost
-  }
+  getData(uniqueSubUrl: string){
+    /* The values to be passed to this uniqueSubUrl parameter have been
+      defined in the 'web.php' file under routes of the back-end
+      laravel application. */
+    return this.http.get(this.backEndUrl + uniqueSubUrl);
+ }
+
 }
