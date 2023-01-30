@@ -1,4 +1,12 @@
-# Emissions App
+# emissions
+
+A project built using Angular front-end and Laravel back-end.
+
+When ready, it will do the following: 
+1. Ask the user what emissions-data she wants to obtain.
+2. Provide filters to enable the user to post a specific query.
+3. Fetch the required data from the [Emissions API](https://api.v2.emissions-api.org/ui/).
+4. Use bar charts or similar graphical tools to show the **analysis-ready** results.
 
 App to show a graph containing the average emission levels of one of the following gases over the chosen period of time : 
 1. Methane
@@ -20,10 +28,12 @@ App to show a graph containing the average emission levels of one of the followi
     Each country's emissions data will be shown by a unique coloured line.
 4. Change the starting date and end date according to your interest.
 
-## Changes since the last commit:
+
+<!-- ## Changes since the last commit: 
 ---
-Changed the root directory of the repository from 'emissions-app' to its parent directory 'emissions'.
+
 
 ## Purpose of the commit:
 ---
-To merge the Angular Front end application and the Laravel Back end application in the current repository.
+To connect the inputs received for gas, country, start date and end date from user with the query to be sent when the "Go" button is pressed.
+-->

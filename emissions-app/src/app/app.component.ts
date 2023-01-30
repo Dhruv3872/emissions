@@ -1,3 +1,4 @@
+import { FormControl } from '@angular/forms';
 import { DbService } from './db.service';
 import { Component } from '@angular/core';
 import { ConfigService } from './config.service';
@@ -10,7 +11,12 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AppComponent {
   title = 'emissions-app';
-  selected: string = "";
+  selectedGas : string = "";
+  selectedCountry : string = "";
+  startDate : FormControl = new FormControl;
+  endDate : FormControl = new FormControl;
+  // startDate : Object = new Object;
+  // endDatePicker : Object = new Object;
   // For 'Select Gas' mat-select form control: 
   gases : string[] = [];
   // For 'Select Country' mat-select form control:
@@ -25,11 +31,7 @@ export class AppComponent {
     let gasData = this.db.getData('gases').subscribe(data => {
       console.log(this.getGasArray(data, this.gases));
     });
-    /*let coountryData = db.getCountries()
-                          .subscribe(data => console.log(data));
-    */
-                          /*let countryData = config.getCountries()
-                            .subscribe(data => console.log(data));
+    /*
     console.log("Methane average emissions data for India between 1st January 2022"
     + " and 23rd November 2022:");
     let methaneAverageDataIndia = config.getMethaneAverageIndia()
@@ -46,7 +48,8 @@ export class AppComponent {
     form control in the place of 'product' in the following emissions API:
     https://api.v2.emissions-api.org/api/v2/{product}/average.json :
   */
-  query(selectedGas : string){
+  sendQuery(){
+    this.db.generateQuery();
     let gasAverageDataIndia = this.config.getGasAverageIndia(this.value)
                                     .subscribe(data => console.log(data));
   }
