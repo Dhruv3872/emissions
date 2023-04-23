@@ -4,6 +4,10 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { SelectGasComponent } from './select-gas/select-gas.component';
+
+//Services:
+import { DbService } from './db.service';
 
 //Angular-material:
 import { MatSelectModule} from '@angular/material/select';
@@ -16,7 +20,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent, SelectGasComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +35,9 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    DbService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -16,9 +16,9 @@ class DatabaseController extends Controller
          the entries having only 3-characters as their country codes, since we want to
          return an array with no duplication.  
         */
-        return DB::select('SELECT country_name FROM countries WHERE LENGTH(country_code) = 3');
+        return DB::select('SELECT * FROM countries WHERE LENGTH(country_code) = 3');
     }
     function getGases(){
-        return DB::select('SELECT Name FROM gases');
+        return DB::select('SELECT * FROM gases');
     }
 }

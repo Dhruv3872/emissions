@@ -15,3 +15,4 @@ class gas extends Model
     Laravel. */
     public $timestamps = false;
 }
+

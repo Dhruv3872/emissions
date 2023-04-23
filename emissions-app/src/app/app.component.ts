@@ -11,26 +11,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AppComponent {
   title = 'emissions-app';
-  selectedGas : string = "";
-  selectedCountry : string = "";
-  startDate : FormControl = new FormControl;
-  endDate : FormControl = new FormControl;
-  // startDate : Object = new Object;
-  // endDatePicker : Object = new Object;
-  // For 'Select Gas' mat-select form control: 
-  gases : string[] = [];
-  // For 'Select Country' mat-select form control:
-  countries : string[] = [];
-  value : string = "";
 
-  constructor(private config: ConfigService, private db: DbService, private http: HttpClient) {
-    let countriesData = this.db.getData('countries').subscribe(data => {
-      console.log(this.getCountryArray(data, this.countries));
-      console.log(Object.keys(data).length);
-    });
-    let gasData = this.db.getData('gases').subscribe(data => {
-      console.log(this.getGasArray(data, this.gases));
-    });
+  constructor() {
     /*
     console.log("Methane average emissions data for India between 1st January 2022"
     + " and 23rd November 2022:");
@@ -48,29 +30,36 @@ export class AppComponent {
     form control in the place of 'product' in the following emissions API:
     https://api.v2.emissions-api.org/api/v2/{product}/average.json :
   */
-  sendQuery(){
-    this.db.generateQuery();
-    let gasAverageDataIndia = this.config.getGasAverageIndia(this.value)
-                                    .subscribe(data => console.log(data));
-  }
+  /*sendValues(){
+    let chosenValues : Object = {
+      chosenGas: this.selectedGas, chosenCountry: this.selectedCountry,
+        chosenStartDate: this.startDate.value.getDate(),
+        chosenStartMonth: this.startDate.value.getMonth(), /* getMonth() method returns a value
+          between 0 & 11 (both values included) corresponding to The month cycle JAN to DEC i.e.
+          for January, it will return 0, and for December, it will return 11. */
+       /* chosenStartYear: this.startDate.value.getFullYear(),
+        chosenEndDate: this.endDate.value.getDate(),
+      chosenEndMonth : this.endDate.value.getMonth(),
+      chosenEndYear : this.endDate.value.getFullYear()
+    };
+    console.log(chosenValues); */
+        // console.log(typeof(this.endDate.value));
+    /* let gasQueryParameter = "";
+    let x = this.db.getData('gases').subscribe(
+      data => {
+        return gasQueryParameter = this.db.getGasQueryParameter(data, this.selectedGas);
+      }
+    );
+    console.log(gasQueryParameter); */
+    //let gasQueryString = String(gasQueryParameter);
+    //console.log(gasQueryString);
+    // console.log(this.value);
+    /* Commenting temporarily until we are able to place the value of the chosen gas 
+    correctly as the argument of getGasAverageIndia method. */
+    //let gasAverageDataIndia = this.config.getGasAverageIndia(gasQueryString)
+      //                              .subscribe(data => console.log(data));
+    // console.log(gasAverageDataIndia);
+    
   ngOnInit(){
-  }
-
-  getCountryArray(object: Object, array: string[]){
-    let i = 0;
-    for(i = 0; i<Object.keys(object).length; i++){
-      let name : string = Object.values(object)[i].country_name;
-        array.push(name);
-    }
-    return array;
-  }
-
-  getGasArray(object: Object, array: string[]){
-    let i = 0;
-    for(i = 0; i<Object.keys(object).length; i++){
-      let name : string = Object.values(object)[i].Name;
-        array.push(name);
-    }
-    return array;
   }
 }
