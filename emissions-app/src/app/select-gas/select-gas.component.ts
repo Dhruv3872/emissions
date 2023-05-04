@@ -2,8 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms'; 
 import { MatSelectModule} from '@angular/material/select';
-import { DbService } from './../db.service';
-import { ConfigService } from './../config.service';
+import { MainService } from '../main.service';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -12,9 +11,9 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./select-gas.component.css']
 })
 export class SelectGasComponent implements OnInit {
-  favoriteColorControl = new FormControl('');
-  selectedGas : string = "";
-  selectedCountry : string = "";
+  gas = new FormControl('');
+  selectedGas : string = "Methane";
+  selectedCountry : string = "India";
   startDate : FormControl = new FormControl;
   endDate : FormControl = new FormControl;
   // For 'Select Gas' mat-select form control: 
@@ -24,37 +23,19 @@ export class SelectGasComponent implements OnInit {
   // For 'Select Country' mat-select form control:
   countries : string[] = [];
   value : string = "";
-  constructor(private config: ConfigService, private db: DbService, private http: HttpClient) {
-    let countriesData = this.db.getData('countries').subscribe(data => {
-      console.log(this.getCountryArray(data, this.countries));
+  constructor(private main: MainService, private http: HttpClient) {
+    /*
       console.log(Object.keys(data).length);
+    });*/
+  }
+
+  ngOnInit(){
+    this.main.getData('countries').subscribe(data => {
+      this.main.getCountryArray(data, this.countries);
     });
-    // console.log(this.db.getData('gases'));
-    let gasData = this.db.getData('gases').subscribe(data => {
-      console.log(this.getGasArray(data, this.gases));
+    this.main.getData('gases').subscribe(data => {
+      this.main.getGasArray(data, this.gases);
     });
-    // console.log(this.gases);
-  }
-
-  ngOnInit(): void {
-  }
-
-  getCountryArray(object: Object, array: string[]){
-    let i = 0;
-    for(i = 0; i<Object.keys(object).length; i++){
-      let name : string = Object.values(object)[i].country_name;
-        array.push(name);
-    }
-    return array;
-  }
-
-  getGasArray(object: Object, array: string[]){
-    let i = 0;
-    for(i = 0; i<Object.keys(object).length; i++){
-      let name : string = Object.values(object)[i].Name;
-        array.push(name);
-    }
-    return array;
   }
 }
 

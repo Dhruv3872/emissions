@@ -2,15 +2,15 @@
   This service is supposed to perform CRUD operations whenever necessary
     on data stored in a local database named "emissions".
  */
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DbService {
-  backEndUrl : string = 'http://localhost:8000/';
+  backEndUrl : string = 'http://localhost:8000/api/';
     /* Since the laravel application needed for this Angular application
       has been run on port 8000.*/
   // backEndUrl : string = 'localhost:8000/';
@@ -35,13 +35,14 @@ export class DbService {
     return this.averageApiUrlPartThree;
   }
 
-  getData(uniqueSubUrl: string){
+  //The method which will be fed to 'getData' method of the main service:
+  getUrl(uniqueSubUrl: string){
     /* The values to be passed to this uniqueSubUrl parameter have been
       defined in the 'web.php' file under routes of the back-end
       laravel application. */
       let completeUrl : string = this.backEndUrl + uniqueSubUrl;
       // console.log(completeUrl);
-    return this.http.get(completeUrl);
+      return completeUrl;
  }
 
    /* Function to get 'query_parameter' from the 'gases' table where the

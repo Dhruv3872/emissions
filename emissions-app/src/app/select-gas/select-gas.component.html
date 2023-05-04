@@ -7,7 +7,7 @@
 <!-- Select gas from the drop down menu: -->
 <mat-form-field appearance="fill">
     <mat-label>Select Gas</mat-label>
-    <mat-select [(value)]="selectedGas" required>
+    <mat-select [formControl]="gas" required>
         <mat-option *ngFor="let gas of gases" [value]="gas">{{ gas }}</mat-option>
     </mat-select>
 </mat-form-field><br>
@@ -39,7 +39,7 @@
   <br><br>
 <!-- A button when clicked, will result in transmission of a query to the Emissions API endpoint: -->
 <!-- <button type="submit" mat-stroked-button color="primary" (click)="sendValues()">Go</button> -->
-<p>Selected gas: {{selectedGas}}</p>
+<p>Selected gas: {{gas.value}}</p>
 <p>Selected country: {{selectedCountry}}</p>
 <p>Selected start date: {{startDate.value}}</p>
 <p>Selected end date: {{endDate.value}}</p>

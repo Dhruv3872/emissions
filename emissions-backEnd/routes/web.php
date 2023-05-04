@@ -17,6 +17,3 @@ use App\Http\Controllers\DatabaseController;
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::get('/countries',[DatabaseController::class,'onlyCountries']);
-Route::get('/gases',[DatabaseController::class,'getGases']);
