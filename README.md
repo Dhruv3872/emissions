@@ -30,12 +30,10 @@ App to show a graph containing the average emission levels of one of the followi
 
 ## Changes since the last commit: 
 ---
-1. The Laravel app should use the api.php route to route requests coming from external apps including the app used for front-end instead of using the web.php route. This has been implemented.
-2. All the services of the app should request the main service of the app to communicate with external APIs i.e. no service other than the main service should be allowed to communicate with external APIs.I generated a 'main' service and made changes in the 'db' service to communicate with the main service. The main service then communicates with the back-end laravel app.
+1. Used Angular Reactive forms instead of directly using the mat-form-field tag.
+2. Began querying. Showing the response on the page for now.
 
 ## Things in mind for future commits:
 ---
-1. Using Angular Reactive forms instead of directly using the mat-form-field tag. This process has been started.
-2. Begin querying. Show the response on the page for now.
-Enable real-time querying i.e. as soon as a form control's value is changed, a corresponding query should be sent and the response should be displayed on the screen.
-3. Find a good Angular graph library and begin incorporating it in the project.
+1. Enable real-time querying i.e. as soon as a form control's value is changed, a corresponding query should be sent and the response should be displayed on the screen.
+2. Find a good Angular graph library and begin incorporating it in the project.

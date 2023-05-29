@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DatabaseController;
+use App\Http\Controllers\ExternalAPIController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +18,9 @@ use App\Http\Controllers\DatabaseController;
 Route::get('/', function () {
     return view('welcome');
 });
+//Temporary route to code proper extraction of gas and county query parameters from the database:
+Route::get('formData2',[ExternalAPIController::class, 'queryToEmissionsAPI2']);
+/*Route::get('/responseFromEmissionsAPI', function () {
+    return view('response');
+}); */
+// Route::get('emissions',[ExternalAPIController::class, 'queryToEmissionsAPI']);

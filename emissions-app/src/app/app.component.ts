@@ -1,8 +1,6 @@
-import { FormControl } from '@angular/forms';
-import { DbService } from './db.service';
-import { Component } from '@angular/core';
-import { ConfigService } from './config.service';
-import { HttpClient } from '@angular/common/http';
+import { Component, LOCALE_ID, Inject } from '@angular/core';
+//services:
+import { MainService } from './main.service';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +10,8 @@ import { HttpClient } from '@angular/common/http';
 export class AppComponent {
   title = 'emissions-app';
 
-  constructor() {
+  constructor(private mainService: MainService,
+    @Inject(LOCALE_ID) public locale: string) {
     /*
     console.log("Methane average emissions data for India between 1st January 2022"
     + " and 23rd November 2022:");
@@ -61,5 +60,6 @@ export class AppComponent {
     // console.log(gasAverageDataIndia);
     
   ngOnInit(){
+    // this.mainService.queryToEmissionsAPI();
   }
 }

@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DatabaseController;
+use App\Http\Controllers\ExternalAPIController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-//API calls supposed to be made by the front-end Angular app:  
+//API calls supposed to be made by the front-end Angular app:
+//Get the list of gases from the database:
 Route::get('gases',[DatabaseController::class,'getGases']);
+//Get the list of countries from the database:
 Route::get('countries',[DatabaseController::class,'onlyCountries']);
+Route::post('formData',[ExternalAPIController::class, 'queryToEmissionsAPI']);
